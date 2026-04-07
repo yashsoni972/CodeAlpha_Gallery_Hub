@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GalleryHub</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <div class="logo-icon"><i class="fa-solid fa-images"></i></div>
+      <div class="logo-text">
+        <span class="logo-main">Gallery<strong>Hub</strong></span>
+        <span class="logo-tagline">Visual Collection Platform</span>
+      </div>
+    </div>
+    <button class="btn-upload" id="openUpload">
+      <i class="fa-solid fa-cloud-arrow-up"></i> Upload Photo
+    </button>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="badge"><i class="fa-solid fa-camera"></i> Curated Collection</span>
+    <h1>Welcome to <span class="highlight">GalleryHub</span></h1>
+    <p>Browse, upload and manage your favourite images all in one place.</p>
+    <div class="hero-stats">
+      <div class="stat"><strong id="totalCount">18</strong><span>Photos</span></div>
+      <div class="stat"><strong>6</strong><span>Categories</span></div>
+      <div class="stat"><strong id="uploadedCount">0</strong><span>Uploaded</span></div>
+    </div>
+  </section>
+
+  <!-- FILTERS -->
+  <section class="filters-section">
+    <div class="filter-tabs" id="filterTabs">
+      <button class="tab active" data-filter="all">All</button>
+      <button class="tab" data-filter="nature">Nature</button>
+      <button class="tab" data-filter="architecture">Architecture</button>
+      <button class="tab" data-filter="travel">Travel</button>
+      <button class="tab" data-filter="portrait">Portrait</button>
+      <button class="tab" data-filter="abstract">Abstract</button>
+      <button class="tab" data-filter="food">Food</button>
+    </div>
+    <div class="view-toggle">
+      <button class="view-btn active" id="gridView" title="Grid View"><i class="fa-solid fa-grip"></i></button>
+      <button class="view-btn" id="listView" title="List View"><i class="fa-solid fa-list"></i></button>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <main class="gallery-wrapper">
+    <div class="gallery" id="gallery">
+
+      <!-- NATURE -->
+      <div class="card" data-category="nature" data-title="Aurora Borealis">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=700&q=85" alt="Aurora Borealis" loading="lazy"/>
+          <div class="img-name-tag"><i class="fa-solid fa-tag"></i> Aurora Borealis</div>
+          <div class="card-overlay">
+            <button class="icon-btn zoom-btn" title="View Full" data-src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=1400&q=90" data-title="Aurora Borealis" data-cat="Nature"><i class="fa-solid fa-expand"></i></button>
+            <button class="icon-btn del-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+        <div class="card-info">
+          <div class="card-top"><span class="cat-tag nature">Nature</span><span class="card-date">Jun 2025</span></div>
+          <p class="card-title">Aurora Borealis</p>
+        </div>
+      </div>
+
+      <div class="card" data-category="nature" data-title="Misty Mountains">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=700&q=85" alt="Misty Mountains" loading="lazy"/>
+          <div class="img-name-tag"><i class="fa-solid fa-tag"></i> Misty Mountains</div>
+          <div class="card-overlay">
+            <button class="icon-btn zoom-btn" title="View Full" data-src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1400&q=90" data-title="Misty Mountains" data-cat="Nature"><i class="fa-solid fa-expand"></i></button>
+            <button class="icon-btn del-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+        <div class="card-info">
+          <div class="card-top"><span class="cat-tag nature">Nature</span><span class="card-date">Jun 2025</span></div>
+          <p class="card-title">Misty Mountains</p>
+        </div>
+      </div>
+
+      <div class="card" data-category="nature" data-title="Lavender Fields">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1499002238440-d264edd596ec?w=700&q=85" alt="Lavender Fields" loading="lazy"/>
+          <div class="img-name-tag"><i class="fa-solid fa-tag"></i> Lavender Fields</div>
+          <div class="card-overlay">
+            <button class="icon-btn zoom-btn" title="View Full" data-src="https://images.unsplash.com/photo-1499002238440-d264edd596ec?w=1400&q=90" data-title="Lavender Fields" data-cat="Nature"><i class="fa-solid fa-expand"></i></button>
+            <button class="icon-btn del-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+        <div class="card-info">
+          <div class="card-top"><span class="cat-tag nature">Nature</span><span class="card-date">Jun 2025</span></div>
+          <p class="card-title">Lavender Fields</p>
+        </div>
+      </div>
+
+      <!-- ARCHITECTURE -->
+      <div class="card" data-category="architecture" data-title="Eiffel Tower">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=700&q=85" alt="Eiffel Tower" loading="lazy"/>
+          <div class="img-name-tag"><i class="fa-solid fa-tag"></i> Eiffel Tower</div>
+          <div class="card-overlay">
+            <button class="icon-btn zoom-btn" title="View Full" data-src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=1400&q=90" data-title="Eiffel Tower" data-cat="Architecture"><i class="fa-solid fa-expand"></i></button>
+            <button class="icon-btn del-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+        <div class="card-info">
+          <div class="card-top"><span class="cat-tag architecture">Architecture</span><span class="card-date">Jun 2025</span></div>
+          <p class="card-title">Eiffel Tower</p>
+        </div>
+      </div>
+
+      <div class="card" data-category="architecture" data-title="City Skyline">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=700&q=85" alt="City Skyline" loading="lazy"/>
+          <div class="img-name-tag"><i class="fa-solid fa-tag"></i> City Skyline</div>
+          <div class="card-overlay">
+            <button class="icon-btn zoom-btn" title="View Full" data-src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1400&q=90" data-title="City Skyline" data-cat="Architecture"><i class="fa-solid fa-expand"></i></button>
+            <button class="icon-btn del-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+        <div class="card-info">
+          <div class="card-top"><span class="cat-tag architecture">Architecture</span><span class="card-date">Jun 2025</span></div>
+          <p class="card-title">City Skyline</p>
+        </div>
+      </div>
+
+      <div class="card" data-category="architecture" data-title="Colosseum Rome">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=700&q=85" alt="Colosseum Rome" loading="lazy"/>
+          <div class="img-name-tag"><i class="fa-solid fa-tag"></i> Colosseum Rome</div>
+          <div class="card-overlay">
+            <button class="icon-btn zoom-btn" title="View Full" data-src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1400&q=90" data-title="Colosseum Rome" data-cat="Architecture"><i class="fa-solid fa-expand"></i></button>
+            <button class="icon-btn del-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+        <div class="card-info">
+          <div class="card-top"><span class="cat-tag architecture">Architecture</span><span class="card-date">Jun 2025</span></div>
+          <p class="card-title">Colosseum Rome</p>
+        </div>
+      </div>
+
+      <!-- TRAVEL -->
+      <div class="card" data-category="travel" data-title="Santorini Greece">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=700&q=85" alt="Santorini Greece" loading="lazy"/>
+          <div class="img-name-tag"><i class="fa-solid fa-tag"></i> Santorini Greece</div>
+          <div class="card-overlay">
+            <button class="icon-btn zoom-btn" title="View Full" data-src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=1400&q=90" data-title="Santorini Greece" data-cat="Travel"><i class="fa-solid fa-expand"></i></button>
+            <button class="icon-btn del-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+        <div class="card-info">
+          <div class="card-top"><span class="cat-tag travel">Travel</span><span class="card-date">Jun 2025</span></div>
+          <p class="card-title">Santorini Greece</p>
+        </div>
+      </div>
+
+      <div class="card" data-category="travel" data-title="Tokyo Street">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=700&q=85" alt="Tokyo Street" loading="lazy"/>
+          <div class="img-name-tag"><i class="fa-solid fa-tag"></i> Tokyo Street</div>
+          <div class="card-overlay">
+            <button class="icon-btn zoom-btn" title="View Full" data-src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1400&q=90" data-title="Tokyo Street" data-cat="Travel"><i class="fa-solid fa-expand"></i></button>
+            <button class="icon-btn del-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+        <div class="card-info">
+          <div class="card-top"><span class="cat-tag travel">Travel</span><span class="card-date">Jun 2025</span></div>
+          <p class="card-title">Tokyo Street</p>
+        </div>
+      </div>
+
+      <div class="card" data-category="travel" data-title="Bali Rice Terraces">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=700&q=85" alt="Bali Rice Terraces" loading="lazy"/>
+          <div class="img-name-tag"><i class="fa-solid fa-tag"></i> Bali Rice Terraces</div>
+          <div class="card-overlay">
+            <button class="icon-btn zoom-btn" title="View Full" data-src="https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=1400&q=90" data-title="Bali Rice Terraces" data-cat="Travel"><i class="fa-solid fa-expand"></i></button>
+            <button class="icon-btn del-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+        <div class="card-info">
+          <div class="card-top"><span class="cat-tag travel">Travel</span><span class="card-date">Jun 2025</span></div>
+          <p class="card-title">Bali Rice Terraces</p>
+        </div>
+      </div>
+
+      <!-- PORTRAIT -->
+      <div class="card" data-category="portrait" data-title="Golden Hour Portrait">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=700&q=85" alt="Golden Hour Portrait" loading="lazy"/>
+          <div class="img-name-tag"><i class="fa-solid fa-tag"></i> Golden Hour Portrait</div>
+          <div class="card-overlay">
+            <button class="icon-btn zoom-btn" title="View Full" data-src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=1400&q=90" data-title="Golden Hour Portrait" data-cat="Portrait"><i class="fa-solid fa-expand"></i></button>
+            <button class="icon-btn del-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+        <div class="card-info">
+          <div class="card-top"><span class="cat-tag portrait">Portrait</span><span class="card-date">Jun 2025</span></div>
+          <p class="card-title">Golden Hour Portrait</p>
+        </div>
+      </div>
+
+      <div class="card" data-category="portrait" data-title="Studio Monochrome">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=700&q=85" alt="Studio Monochrome" loading="lazy"/>
+          <div class="img-name-tag"><i class="fa-solid fa-tag"></i> Studio Monochrome</div>
+          <div class="card-overlay">
+            <button class="icon-btn zoom-btn" title="View Full" data-src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=1400&q=90" data-title="Studio Monochrome" data-cat="Portrait"><i class="fa-solid fa-expand"></i></button>
+            <button class="icon-btn del-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+        <div class="card-info">
+          <div class="card-top"><span class="cat-tag portrait">Portrait</span><span class="card-date">Jun 2025</span></div>
+          <p class="card-title">Studio Monochrome</p>
+        </div>
+      </div>
+
+      <!-- ABSTRACT -->
+      <div class="card" data-category="abstract" data-title="Liquid Colors">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=700&q=85" alt="Liquid Colors" loading="lazy"/>
+          <div class="img-name-tag"><i class="fa-solid fa-tag"></i> Liquid Colors</div>
+          <div class="card-overlay">
+            <button class="icon-btn zoom-btn" title="View Full" data-src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=1400&q=90" data-title="Liquid Colors" data-cat="Abstract"><i class="fa-solid fa-expand"></i></button>
+            <button class="icon-btn del-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+        <div class="card-info">
+          <div class="card-top"><span class="cat-tag abstract">Abstract</span><span class="card-date">Jun 2025</span></div>
+          <p class="card-title">Liquid Colors</p>
+        </div>
+      </div>
+
+      <div class="card" data-category="abstract" data-title="Purple Smoke Art">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=85" alt="Purple Smoke Art" loading="lazy"/>
+          <div class="img-name-tag"><i class="fa-solid fa-tag"></i> Purple Smoke Art</div>
+          <div class="card-overlay">
+            <button class="icon-btn zoom-btn" title="View Full" data-src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=90" data-title="Purple Smoke Art" data-cat="Abstract"><i class="fa-solid fa-expand"></i></button>
+            <button class="icon-btn del-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+        <div class="card-info">
+          <div class="card-top"><span class="cat-tag abstract">Abstract</span><span class="card-date">Jun 2025</span></div>
+          <p class="card-title">Purple Smoke Art</p>
+        </div>
+      </div>
+
+      <div class="card" data-category="abstract" data-title="Paint Splash">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=700&q=85" alt="Paint Splash" loading="lazy"/>
+          <div class="img-name-tag"><i class="fa-solid fa-tag"></i> Paint Splash</div>
+          <div class="card-overlay">
+            <button class="icon-btn zoom-btn" title="View Full" data-src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=1400&q=90" data-title="Paint Splash" data-cat="Abstract"><i class="fa-solid fa-expand"></i></button>
+            <button class="icon-btn del-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+        <div class="card-info">
+          <div class="card-top"><span class="cat-tag abstract">Abstract</span><span class="card-date">Jun 2025</span></div>
+          <p class="card-title">Paint Splash</p>
+        </div>
+      </div>
+
+      <!-- FOOD -->
+      <div class="card" data-category="food" data-title="Gourmet Burger">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=700&q=85" alt="Gourmet Burger" loading="lazy"/>
+          <div class="img-name-tag"><i class="fa-solid fa-tag"></i> Gourmet Burger</div>
+          <div class="card-overlay">
+            <button class="icon-btn zoom-btn" title="View Full" data-src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1400&q=90" data-title="Gourmet Burger" data-cat="Food"><i class="fa-solid fa-expand"></i></button>
+            <button class="icon-btn del-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+        <div class="card-info">
+          <div class="card-top"><span class="cat-tag food">Food</span><span class="card-date">Jun 2025</span></div>
+          <p class="card-title">Gourmet Burger</p>
+        </div>
+      </div>
+
+      <div class="card" data-category="food" data-title="Fresh Sushi Platter">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=700&q=85" alt="Fresh Sushi Platter" loading="lazy"/>
+          <div class="img-name-tag"><i class="fa-solid fa-tag"></i> Fresh Sushi Platter</div>
+          <div class="card-overlay">
+            <button class="icon-btn zoom-btn" title="View Full" data-src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=1400&q=90" data-title="Fresh Sushi Platter" data-cat="Food"><i class="fa-solid fa-expand"></i></button>
+            <button class="icon-btn del-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+        <div class="card-info">
+          <div class="card-top"><span class="cat-tag food">Food</span><span class="card-date">Jun 2025</span></div>
+          <p class="card-title">Fresh Sushi Platter</p>
+        </div>
+      </div>
+
+      <div class="card" data-category="food" data-title="Chocolate Dessert">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=700&q=85" alt="Chocolate Dessert" loading="lazy"/>
+          <div class="img-name-tag"><i class="fa-solid fa-tag"></i> Chocolate Dessert</div>
+          <div class="card-overlay">
+            <button class="icon-btn zoom-btn" title="View Full" data-src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=1400&q=90" data-title="Chocolate Dessert" data-cat="Food"><i class="fa-solid fa-expand"></i></button>
+            <button class="icon-btn del-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+        <div class="card-info">
+          <div class="card-top"><span class="cat-tag food">Food</span><span class="card-date">Jun 2025</span></div>
+          <p class="card-title">Chocolate Dessert</p>
+        </div>
+      </div>
+
+      <div class="card" data-category="food" data-title="Italian Pasta">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=700&q=85" alt="Italian Pasta" loading="lazy"/>
+          <div class="img-name-tag"><i class="fa-solid fa-tag"></i> Italian Pasta</div>
+          <div class="card-overlay">
+            <button class="icon-btn zoom-btn" title="View Full" data-src="https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=1400&q=90" data-title="Italian Pasta" data-cat="Food"><i class="fa-solid fa-expand"></i></button>
+            <button class="icon-btn del-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+        <div class="card-info">
+          <div class="card-top"><span class="cat-tag food">Food</span><span class="card-date">Jun 2025</span></div>
+          <p class="card-title">Italian Pasta</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="empty-state" id="emptyState" style="display:none;">
+      <i class="fa-regular fa-image"></i>
+      <p>No photos in "<span id="emptyQuery"></span>" category</p>
+    </div>
+  </main>
+
+  <!-- UPLOAD MODAL -->
+  <div class="modal-overlay" id="uploadModal">
+    <div class="modal">
+
+      <div class="modal-header">
+        <h2><i class="fa-solid fa-cloud-arrow-up"></i> Upload Photo</h2>
+        <button class="modal-close" id="closeUpload"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <!-- STEP 1: Drop / Browse -->
+      <div class="upload-step" id="step1">
+        <div class="drop-zone" id="dropZone">
+          <i class="fa-solid fa-cloud-arrow-up drop-icon"></i>
+          <p class="drop-title">Drag & drop your photo here</p>
+          <p class="drop-sub">Supports JPG, PNG, WEBP, GIF</p>
+          <label class="pick-btn" for="fileInput">
+            <i class="fa-solid fa-folder-open"></i> Choose File
+          </label>
+          <input type="file" id="fileInput" accept="image/*" hidden/>
+        </div>
+      </div>
+
+      <!-- STEP 2: Preview + Name + Manual Category -->
+      <div class="upload-step" id="step2" style="display:none;">
+        <div class="preview-wrap">
+          <img id="previewImg" src="" alt="Preview"/>
+          <button class="change-btn" id="changeFile">
+            <i class="fa-solid fa-rotate"></i> Change
+          </button>
+        </div>
+        <div class="name-field">
+          <label for="photoNameInput"><i class="fa-solid fa-pen-to-square"></i> Photo Name</label>
+          <input type="text" id="photoNameInput" placeholder="e.g. Sunset at Beach" maxlength="60"/>
+        </div>
+        <div class="cat-chips">
+          <label class="chip-label"><input type="radio" name="cat" value="nature" checked/><span>🌿 Nature</span></label>
+          <label class="chip-label"><input type="radio" name="cat" value="architecture"/><span>🏛 Architecture</span></label>
+          <label class="chip-label"><input type="radio" name="cat" value="travel"/><span>✈️ Travel</span></label>
+          <label class="chip-label"><input type="radio" name="cat" value="portrait"/><span>🧑 Portrait</span></label>
+          <label class="chip-label"><input type="radio" name="cat" value="abstract"/><span>🎨 Abstract</span></label>
+          <label class="chip-label"><input type="radio" name="cat" value="food"/><span>🍽 Food</span></label>
+          <label class="chip-label"><input type="radio" name="cat" value="other"/><span>✏️ Other</span></label>
+        </div>
+        <div class="other-input" id="otherInput" style="display:none;">
+          <input type="text" id="otherCatInput" placeholder="Type your category…" maxlength="30"/>
+        </div>
+      </div>
+
+      <p class="upload-error" id="uploadError"></p>
+
+      <div class="modal-footer">
+        <button class="btn-cancel" id="cancelUpload">Cancel</button>
+        <button class="btn-add" id="confirmUpload" disabled>
+          <i class="fa-solid fa-plus"></i> Add to Gallery
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lb-close" id="lbClose"><i class="fa-solid fa-xmark"></i></button>
+    <button class="lb-nav lb-prev" id="lbPrev"><i class="fa-solid fa-chevron-left"></i></button>
+    <button class="lb-nav lb-next" id="lbNext"><i class="fa-solid fa-chevron-right"></i></button>
+    <div class="lb-content">
+      <img id="lbImg" src="" alt=""/>
+      <div class="lb-info">
+        <div>
+          <p id="lbTitle" class="lb-title"></p>
+          <span id="lbCat" class="lb-cat"></span>
+        </div>
+        <button class="lb-btn" id="lbDownload"><i class="fa-solid fa-download"></i> Download</button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
