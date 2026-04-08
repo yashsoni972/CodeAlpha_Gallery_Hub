@@ -54,6 +54,68 @@ document.getElementById('listView').addEventListener('click', function () {
   this.classList.add('active');
 });
 
+// ── LocalStorage ──
+function saveUploads() {
+  const data = [...gallery.querySelectorAll('.card[data-uploaded]')].map(card => ({
+    src:      card.querySelector('.zoom-btn').dataset.src,
+    title:    card.dataset.title,
+    cat:      card.dataset.category,
+    catLabel: card.querySelector('.cat-tag').textContent,
+    date:     card.querySelector('.card-date').textContent
+  }));
+  localStorage.setItem('galleryUploads', JSON.stringify(data));
+}
+
+const DEFAULT_CATS = ['nature','architecture','travel','portrait','abstract','food'];
+
+function loadUploads() {
+  const saved = JSON.parse(localStorage.getItem('galleryUploads') || '[]');
+  saved.forEach(item => {
+    addCardToGallery(item.src, item.title, item.cat, item.catLabel, item.date);
+    // restore custom chip in upload modal if not a default category
+    if (!DEFAULT_CATS.includes(item.cat)) addCustomChip(item.cat, item.catLabel);
+    uploadedTotal++;
+  });
+  updateStats();
+}
+
+function addCardToGallery(src, name, cat, catLabel, date) {
+  // Add filter tab if missing
+  const filterTabs = document.getElementById('filterTabs');
+  if (!filterTabs.querySelector(`[data-filter="${cat}"]`)) {
+    const btn = document.createElement('button');
+    btn.className = 'tab';
+    btn.dataset.filter = cat;
+    btn.textContent = catLabel;
+    filterTabs.appendChild(btn);
+  }
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.dataset.category = cat;
+  card.dataset.title    = name;
+  card.dataset.uploaded = '1';
+  card.innerHTML = `
+    <div class="card-img-wrap">
+      <img src="${src}" alt="${name}"/>
+      <div class="img-name-tag"><i class="fa-solid fa-tag"></i> ${name}</div>
+      <div class="card-overlay">
+        <button class="icon-btn zoom-btn" title="View"
+          data-src="${src}" data-title="${name}" data-cat="${catLabel}">
+          <i class="fa-solid fa-expand"></i>
+        </button>
+        <button class="icon-btn del-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
+      </div>
+    </div>
+    <div class="card-info">
+      <div class="card-top">
+        <span class="cat-tag other">${catLabel}</span>
+        <span class="card-date">${date}</span>
+      </div>
+      <p class="card-title">${name}</p>
+    </div>`;
+  gallery.prepend(card);
+}
+
 // ── Delete ──
 gallery.addEventListener('click', e => {
   const delBtn = e.target.closest('.del-btn');
@@ -62,7 +124,7 @@ gallery.addEventListener('click', e => {
   card.style.transition = 'opacity .3s, transform .3s';
   card.style.opacity = '0';
   card.style.transform = 'scale(.9)';
-  setTimeout(() => { card.remove(); applyFilters(); updateStats(); }, 300);
+  setTimeout(() => { card.remove(); applyFilters(); updateStats(); saveUploads(); }, 300);
 });
 
 // ── Lightbox ──
@@ -244,42 +306,9 @@ confirmBtn.addEventListener('click', () => {
   const catLabel = cat.charAt(0).toUpperCase() + cat.slice(1).replace(/-/g, ' ');
   const now = new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
 
-  // Add filter tab to main page if this category doesn't exist yet
-  const filterTabs = document.getElementById('filterTabs');
-  if (!filterTabs.querySelector(`[data-filter="${cat}"]`)) {
-    const btn = document.createElement('button');
-    btn.className = 'tab';
-    btn.dataset.filter = cat;
-    btn.textContent = catLabel;
-    filterTabs.appendChild(btn);
-  }
-
-  const card = document.createElement('div');
-  card.className = 'card';
-  card.dataset.category = cat;
-  card.dataset.title    = name;
-  card.innerHTML = `
-    <div class="card-img-wrap">
-      <img src="${uploadedDataURL}" alt="${name}"/>
-      <div class="img-name-tag"><i class="fa-solid fa-tag"></i> ${name}</div>
-      <div class="card-overlay">
-        <button class="icon-btn zoom-btn" title="View"
-          data-src="${uploadedDataURL}" data-title="${name}" data-cat="${catLabel}">
-          <i class="fa-solid fa-expand"></i>
-        </button>
-        <button class="icon-btn del-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
-      </div>
-    </div>
-    <div class="card-info">
-      <div class="card-top">
-        <span class="cat-tag other">${catLabel}</span>
-        <span class="card-date">${now}</span>
-      </div>
-      <p class="card-title">${name}</p>
-    </div>`;
-
-  gallery.prepend(card);
+  addCardToGallery(uploadedDataURL, name, cat, catLabel, now);
   uploadedTotal++;
+  saveUploads();
   closeModal();
   applyFilters();
   updateStats();
@@ -340,5 +369,6 @@ document.getElementById('lbDownload').addEventListener('click', async () => {
 });
 
 // ── Init ──
+loadUploads();
 applyFilters();
 updateStats();
