@@ -19,7 +19,7 @@
 
 **GalleryHub** is a clean, modern visual collection platform where you can browse a curated gallery of stunning photos, filter them by category, upload your own images, and download favourites — all within a beautiful, responsive interface.
 
-> Built as part of the **CodeAlpha Internship** program.
+> Built as part of the **CodeAlpha Frontend Development Internship** program.
 
 ---
 
@@ -91,7 +91,7 @@ open index.html
 ## 🙌 Acknowledgements
 
 - Images sourced from **[Unsplash](https://unsplash.com)**
-- Built during the **[CodeAlpha](https://www.codealpha.tech/)** Internship Program
+- Built during the **[CodeAlpha Frontend Development Internship](https://www.codealpha.tech/)** program
 
 ---
 
