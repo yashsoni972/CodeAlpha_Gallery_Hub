@@ -68,10 +68,12 @@ gallery.addEventListener('click', e => {
 // ── Lightbox ──
 gallery.addEventListener('click', e => {
   const zoomBtn = e.target.closest('.zoom-btn');
-  if (!zoomBtn) return;
+  const img = !zoomBtn && e.target.closest('.card-img-wrap') && e.target.closest('img');
+  const trigger = zoomBtn || (img && img.closest('.card').querySelector('.zoom-btn'));
+  if (!trigger) return;
   visibleCards = cards().filter(c => !c.classList.contains('hidden'));
-  currentIndex = visibleCards.indexOf(zoomBtn.closest('.card'));
-  openLightbox(zoomBtn.dataset.src, zoomBtn.dataset.title, zoomBtn.dataset.cat);
+  currentIndex = visibleCards.indexOf(trigger.closest('.card'));
+  openLightbox(trigger.dataset.src, trigger.dataset.title, trigger.dataset.cat);
 });
 
 function openLightbox(src, title, cat) {
