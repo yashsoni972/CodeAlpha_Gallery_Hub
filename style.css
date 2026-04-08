@@ -161,6 +161,7 @@ header {
 .card-img-wrap img {
   width: 100%; display: block;
   transition: transform .45s ease;
+  cursor: pointer;
 }
 .card:hover .card-img-wrap img { transform: scale(1.06); }
 
